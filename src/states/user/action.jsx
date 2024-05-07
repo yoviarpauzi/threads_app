@@ -29,6 +29,13 @@ const userResetState = (action) => {
   };
 };
 
+const userLeaderboardActionCreator = (action) => {
+  return {
+    type: "USER_LEADERBOARD",
+    payload: action,
+  };
+};
+
 const asyncUserRegister = (name, email, password) => {
   return async (dispatch) => {
     dispatch(showLoading());
@@ -66,7 +73,7 @@ const asyncUserLogin = (email, password) => {
   };
 };
 
-const asyncUserProfile = (email, password) => {
+const asyncUserProfile = () => {
   return async (dispatch) => {
     dispatch(showLoading());
     try {
@@ -84,12 +91,16 @@ const asyncUserProfile = (email, password) => {
   };
 };
 
+const asyncUserLeaderboard = () => {};
+
 export {
   userLoginActionCreator,
   userRegisterActionCreator,
   userProfileActionCreator,
   userResetState,
+  userLeaderboardActionCreator,
   asyncUserRegister,
   asyncUserLogin,
   asyncUserProfile,
+  asyncUserLeaderboard,
 };
