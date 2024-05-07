@@ -1,6 +1,5 @@
 import { getAccessToken, removeAccessToken } from "../../utils/network-data";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import NavList from "../atoms/NavList";
 import { asyncUserProfile } from "../../states/user/action";
