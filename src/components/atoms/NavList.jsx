@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const NavList = ({ children }) => {
-  return <ul className="flex items-center">{children}</ul>;
+  return <ul className="flex items-center gap-x-3">{children}</ul>;
 };
 
 NavList.propTypes = {
