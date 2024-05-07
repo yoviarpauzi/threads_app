@@ -1,7 +1,7 @@
 import FormTemplate from "../templates/FormTemplate";
 import FormTitle from "../atoms/FormTitle";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { asyncUserRegister, userResetState } from "../../states/user/action";
 import InputFormContainer from "../atoms/InputFormContainer";
 import LabelForm from "../atoms/LabelForm";
