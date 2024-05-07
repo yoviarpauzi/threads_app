@@ -20,7 +20,7 @@ const fetchWithAuth = async (url, options) => {
     };
   }
   const response = await fetch(url, options);
-  return response.json();
+  return response;
 };
 
 const register = async (userCredential) => {
@@ -28,7 +28,7 @@ const register = async (userCredential) => {
     method: "POST",
     headers,
     body: JSON.stringify(userCredential),
-  });
+  }).then((response) => response.json());
 };
 
 const login = async (userCredential) => {
@@ -36,21 +36,21 @@ const login = async (userCredential) => {
     method: "POST",
     headers,
     body: JSON.stringify(userCredential),
-  });
+  }).then((response) => response.json());
 };
 
 const getProfile = async () => {
   return await fetchWithAuth(`${BASE_URL}/users/me`, {
     method: "GET",
     headers,
-  });
+  }).then((response) => response.json());
 };
 
 const getLeaderboard = async () => {
   return await fetch(`${BASE_URL}/leaderboards`, {
     method: "GET",
     headers,
-  });
+  }).then((response) => response.json());
 };
 
 const createThread = async (thread) => {
@@ -58,35 +58,35 @@ const createThread = async (thread) => {
     method: "POST",
     headers,
     body: JSON.stringify(thread),
-  });
+  }).then((response) => response.json());
 };
 
 const getAllThread = async (threadID) => {
   return await fetch(`${BASE_URL}/threads/${threadID}`, {
     method: "POST",
     headers,
-  });
+  }).then((response) => response.json());
 };
 
 const getDetailThread = async (threadId) => {
   return await fetch(`${BASE_URL}/threads/${threadId}`, {
     method: "GET",
     headers,
-  });
+  }).then((response) => response.json());
 };
 
 const upVoteThread = async (threadId) => {
   return await fetchWithAuth(`${BASE_URL}/threads/${threadId}/up-vote`, {
     method: "POST",
     headers,
-  });
+  }).then((response) => response.json());
 };
 
 const downVoteThread = async (threadId) => {
   return await fetchWithAuth(`${BASE_URL}/threads/${threadId}/down-vote`, {
     method: "POST",
     headers,
-  });
+  }).then((response) => response.json());
 };
 
 const createComment = async (threadId, comment) => {
@@ -94,7 +94,7 @@ const createComment = async (threadId, comment) => {
     method: "POST",
     headers,
     body: JSON.stringify(comment),
-  });
+  }).then((response) => response.json());
 };
 
 const upVoteComment = async (threadId, commentId) => {
@@ -104,7 +104,7 @@ const upVoteComment = async (threadId, commentId) => {
       method: "POST",
       headers,
     }
-  );
+  ).then((response) => response.json());
 };
 
 const downVoteComment = async (threadId, commentId) => {
@@ -114,7 +114,7 @@ const downVoteComment = async (threadId, commentId) => {
       method: "POST",
       headers,
     }
-  );
+  ).then((response) => response.json());
 };
 
 export {

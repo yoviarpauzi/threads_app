@@ -30,14 +30,11 @@ const Register = () => {
   };
 
   useEffect(() => {
-    dispatch(userResetState());
-  }, []);
-
-  useEffect(() => {
     if (status == "fail") {
       window.alert(message);
       dispatch(userResetState());
     } else if (status == "success") {
+      dispatch(userResetState());
       navigate("/login");
     }
   }, [status, message]);

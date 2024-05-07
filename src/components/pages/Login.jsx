@@ -23,15 +23,12 @@ const Login = () => {
   };
 
   useEffect(() => {
-    dispatch(userResetState());
-  }, []);
-
-  useEffect(() => {
     if (status == "fail") {
       window.alert(message);
       dispatch(userResetState());
     } else if (status == "success") {
       putAccessToken(data.token);
+      dispatch(userResetState());
       navigate("/");
     }
   }, [status]);
