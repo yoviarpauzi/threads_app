@@ -8,7 +8,6 @@ import LabelForm from "../atoms/LabelForm";
 import InputForm from "../atoms/InputForm";
 import ButtonSubmit from "../atoms/ButtonSubmit";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -31,11 +30,14 @@ const Register = () => {
   };
 
   useEffect(() => {
+    dispatch(userResetState());
+  }, []);
+
+  useEffect(() => {
     if (status == "fail") {
       window.alert(message);
       dispatch(userResetState());
     } else if (status == "success") {
-      dispatch(userResetState());
       navigate("/login");
     }
   }, [status, message]);

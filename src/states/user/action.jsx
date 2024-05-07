@@ -1,4 +1,9 @@
-import { getProfile, login, register } from "../../utils/network-data";
+import {
+  getLeaderboard,
+  getProfile,
+  login,
+  register,
+} from "../../utils/network-data";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 const userRegisterActionCreator = (action) => {
@@ -91,7 +96,24 @@ const asyncUserProfile = () => {
   };
 };
 
-const asyncUserLeaderboard = () => {};
+const asyncUserLeaderboard = () => {
+  return async (dispatch) => {
+    dispatch(showLoading());
+    try {
+      const response = await getLeaderboard();
+      dispatch(userLeaderboardActionCreator(response));
+    } catch (e) {
+      dispatch(
+        userLeaderboardActionCreator({
+          status: "fail",
+          message: e.message,
+          s,
+        })
+      );
+    }
+    dispatch(hideLoading());
+  };
+};
 
 export {
   userLoginActionCreator,

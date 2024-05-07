@@ -8,7 +8,6 @@ import InputForm from "../atoms/InputForm";
 import ButtonSubmit from "../atoms/ButtonSubmit";
 import { useDispatch } from "react-redux";
 import { asyncUserLogin, userResetState } from "../../states/user/action";
-import { useSelector } from "react-redux";
 import { putAccessToken } from "../../utils/network-data";
 
 const Login = () => {
@@ -24,15 +23,18 @@ const Login = () => {
   };
 
   useEffect(() => {
+    dispatch(userResetState());
+  }, []);
+
+  useEffect(() => {
     if (status == "fail") {
       window.alert(message);
       dispatch(userResetState());
     } else if (status == "success") {
       putAccessToken(data.token);
-      dispatch(userResetState());
       navigate("/");
     }
-  }, [status, message]);
+  }, [status]);
 
   return (
     <FormTemplate>

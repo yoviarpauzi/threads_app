@@ -30,6 +30,14 @@ const userReducer = (state = {}, action = {}) => {
     };
   }
 
+  if (action.type == "USER_LEADERBOARD") {
+    return {
+      data: action?.payload?.data?.leaderboards,
+      status: action.payload.status,
+      message: action.payload.message,
+    };
+  }
+
   return state;
 };
 
